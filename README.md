@@ -1,6 +1,6 @@
 # Stake Distribution of Avalanche Validators
 
-![](./image/2021-05-03.svg)
+![](./image/2021-05-31.svg)
 
 The graph above shows the *cumulative stake distribution* among the Avalanche validators: Since (at the moment), there is no progressive taxation on the larger validator *rewards*, the shown GINI inequality coefficient is applicable to wealth (i.e. stake) *and* income (i.e. rewards):
 
@@ -8,7 +8,7 @@ The graph above shows the *cumulative stake distribution* among the Avalanche va
 
 2. The *blue* line plots the cumulative stake of validators excluding delegations, where its GINI coefficient is not shown, but it is obviously in the same ball park as for the *red* one.
 
-3. The diagonal *dotted* line is the "frontier of decentralization", i.e. if all stakes were distributed equally among all the validators, then the *red* and *blue* linse would overlap with this *dotted* diagonal.
+3. The diagonal *dotted* line is the "frontier of decentralization", i.e. if all stakes were distributed equally among all the validators, then the *red* and *blue* lines would overlap with this *dotted* diagonal.
 
 4. And finally, the vertical *dashed-dotted* one is the "line of control" at the `30%` -vs- `70%` split (w.r.t. total stakes): Hence, the *many* smaller validators on the *left hand side* of the line control only `30%` of all stakes, while the *few* larger validators on the *right hand side* control a whopping `70%`!
 
