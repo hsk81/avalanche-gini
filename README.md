@@ -1,6 +1,6 @@
 # Stake Distribution of Avalanche Validators
 
-![](./image/2021-08-29.svg)
+![](./image/2021-09-17.svg)
 
 The graph above shows the *cumulative stake distribution* among the Avalanche validators: Since (at the moment), there is no progressive taxation on the larger validator *rewards*, the shown GINI inequality coefficient is applicable to wealth (i.e. stake) *and* income (i.e. rewards):
 
@@ -47,6 +47,20 @@ Name            : geoip
 Version         : 1.6.12-2
 Description     : Non-DNS IP-to-country resolver C library & utils
 URL             : https://www.maxmind.com/app/c
+```
+
+```
+Name            : geoip-database
+Version         : 20210921-1
+Description     : GeoIP legacy country database (based on GeoLite2 data created by MaxMind)
+URL             : https://mailfud.org/geoip-legacy/
+```
+
+```
+Name            : geoip-database-extra
+Version         : 20210921-1
+Description     : GeoIP legacy city/ASN databases (based on GeoLite2 data created by MaxMind)
+URL             : https://mailfud.org/geoip-legacy/
 ```
 
 ## Installation
