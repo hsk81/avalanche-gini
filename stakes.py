@@ -68,13 +68,13 @@ def by_address(validators: List[Any], groups={}) -> List[Any]:
             'id': set(),
             'rewardAddresses': set(),
             'weight': 0,
-            'delegatedWeight': 0,
+            'delegatorWeight': 0,
             'totalWeight': 0
         })
         g['id'].update(v['id'] if type(v['id']) == list else [v['id']])
         g['rewardAddresses'].update(v['rewardAddresses'])
         g['weight'] += v['weight']
-        g['delegatedWeight'] += v['delegatedWeight']
+        g['delegatorWeight'] += v['delegatorWeight']
         g['totalWeight'] += v['totalWeight']
         groups[k] = g
 

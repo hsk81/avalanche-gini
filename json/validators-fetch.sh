@@ -136,10 +136,10 @@ function validators_map {
         id:.nodeID,
         rewardAddresses:.rewardOwner.addresses|sort,
         weight:.stakeAmount|tonumber,
-        delegatedWeight:(.delegators|try map(.stakeAmount|tonumber) catch [0]|add),
+        delegatorWeight:.delegatorWeight|tonumber,
         startTime, endTime
     })|map(. += {
-        totalWeight:(.weight+.delegatedWeight)
+        totalWeight:(.weight+.delegatorWeight)
     })|sort_by(.totalWeight)|reverse' ;
 }
 
