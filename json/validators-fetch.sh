@@ -135,7 +135,7 @@ function validators_map {
     jq -c '.result.validators|map({
         id:.nodeID,
         rewardAddresses:.rewardOwner.addresses|sort,
-        weight:.stakeAmount|tonumber,
+        weight:.weight|tonumber,
         delegatorWeight:.delegatorWeight|tonumber,
         startTime, endTime
     })|map(. += {
