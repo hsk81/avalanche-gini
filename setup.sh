@@ -1,6 +1,6 @@
 #!/bin/bash
 ###############################################################################
-SCRIPT_PATH=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd) ;
+SCRIPT_PATH=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
 ###############################################################################
 
 function setup_env () {
@@ -10,12 +10,12 @@ function setup_env () {
         if $(hash git) ; then
             git submodule update --init
         fi
-        if [ $PY3 ] ; then
-            virtualenv . --prompt="[$1] " --python=/usr/bin/python3 --system-site-packages
-        elif [ $PY2 ] ; then
-            virtualenv . --prompt="[$1] " --python=/usr/bin/python2 --system-site-packages
+        if [ $PY -eq 3 ] ; then
+            virtualenv . --prompt="$1" --python=/usr/bin/python3 --system-site-packages
+        elif [ $PY -eq 2 ] ; then
+            virtualenv . --prompt="$1" --python=/usr/bin/python2 --system-site-packages
         else
-            virtualenv . --prompt="[$1] " --python=/usr/bin/python --system-site-packages
+            virtualenv . --prompt="$1" --python=/usr/bin/python  --system-site-packages
         fi
     fi
 }
@@ -52,7 +52,7 @@ case ${1} in
     clean)
         clean_env && clean_egg && clean_pyc && clean_log ;;
     init)
-        setup_env "avalanche" ;;
+        setup_env "[gini]" ;;
     pip-update)
         pip_update ;;
     *)
