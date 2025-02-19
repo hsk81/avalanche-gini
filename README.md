@@ -66,15 +66,17 @@ URL             : https://mailfud.org/geoip-legacy/
 ## Installation
 
 ```sh
-$ ./setup.sh ## setup virtual python environment
+$ PY=3 ./setup.sh ## setup virtual python3 environment
 ```
 
 ```sh
-$ source bin/activate ## activate virtual python environment
+$ source bin/activate ## activate virtual python3 environment
 ```
 
 ```sh
-[avalanche] $ ./setup.py install ## setup python dependencies
+[gini]$ pip install --upgrade pip
+[gini]$ pip install matplotlib
+[gini]$ pip install numpy
 ```
 
 ## Fetch Stake Distribution
@@ -141,4 +143,4 @@ $ ./json/validators-list.sh -g < ./json/$(date +'%Y-%m-%d')/validators-ext.json
 
 ## Copyright
 
- © 2021, [Hasan Karahan](mailto:avalanche@blackhan.com), MSc ETH Zurich.
+ © 2025, [Hasan Karahan](mailto:avalanche@blackhan.com), MSc ETH Zurich.
