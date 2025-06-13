@@ -97,23 +97,23 @@ function peers_geoip {
 }
 
 function geoip {
-    local GEO=$(geoiplookup "${1}") ;
-    local GEO_CO=$(echo "$GEO" | grep Country | cut -d':' -f2 | sed -e 's/^[ \t]*//') ;
-    local GEO_CI=$(echo "$GEO" | grep City    | cut -d':' -f2 | sed -e 's/^[ \t]*//') ;
-    local GEO_AS=$(echo "$GEO" | grep ASNum   | cut -d':' -f2 | sed -e 's/^[ \t]*//') ;
-    GEO_CO=$(echo '"'"${GEO_CO}"'"' | jq -c 'split(", ")') ;
-    GEO_CI=$(echo '"'"${GEO_CI}"'"' | jq -c 'split(", ")') ;
-    GEO_AS=$(echo '"'"${GEO_AS}"'"' | jq -c 'split(" ")' | jq -c '[.[0],(.[1:]|join(" "))]') ;
-    GEO_CO=$(echo "${GEO_CO}" | jq -c '{
-        "code":.[0],"name":.[1]
-    }') ;
-    GEO_CI=$(echo "${GEO_CI}" | jq -c '{
-        "state":.[1],"name":.[3],"latitude":.[5]|tonumber,"longitude":.[6]|tonumber
-    }') ;
-    GEO_AS=$(echo "${GEO_AS}" | jq -c '{
-        "code":.[0],"name":.[1]
-    }') ;
-    echo '{"asnum":'"$GEO_AS"',"city":'"$GEO_CI"',"country":'"$GEO_CO"'}' ;
+    local JSON=$(curl -s "https://ipwho.is/${1}")
+    echo "$JSON" | jq -c '{
+        country: {
+            code: .country_code,
+            name: .country
+        },
+        city: {
+            name: .city,
+            region: .region,
+            latitude: (.latitude | tonumber),
+            longitude: (.longitude | tonumber)
+        },
+        asnum: {
+            code: ("AS" + (.connection.asn | tostring)),
+            name: .connection.org
+        }
+    }' ;
 }
 
 ###############################################################################
@@ -134,7 +134,7 @@ function validators {
 function validators_map {
     jq -c '.result.validators|map({
         id:.nodeID,
-        rewardAddresses:.rewardOwner.addresses|sort,
+        rewardAddresses:.validationRewardOwner.addresses|sort,
         weight:.weight|tonumber,
         delegatorWeight:.delegatorWeight|tonumber,
         startTime, endTime
