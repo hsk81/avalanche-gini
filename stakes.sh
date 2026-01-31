@@ -3,6 +3,7 @@
 ###############################################################################
 CMD_SCRIPT=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
 ###############################################################################
+cd "$CMD_SCRIPT" || exit 1 ;
 
 function cli {
     local -ag API_HOSTS=() ;
@@ -57,18 +58,20 @@ function cli_next_index {
 ###############################################################################
 
 function fetch {
-    API_HOSTS="${API_HOSTS[*]}" ./json/validators-fetch.sh -g ;
+    API_HOSTS="${API_HOSTS[*]}" "$CMD_SCRIPT/json/validators-fetch.sh" -g ;
 }
 
 function plot {
-    source bin/activate && ./stakes.py && ./stakes.py -g ;
+    source "$CMD_SCRIPT/bin/activate" \
+	&& "$CMD_SCRIPT/stakes.py" -g \
+	&& "$CMD_SCRIPT/stakes.py" ;
 }
 
 function commit {
     local DATE="$(date +'%Y-%m-%d')" ;
-    git add "json/${DATE}" && \
-    git add "image/${DATE}.svg" && \
-    git add "image/${DATE}G.svg" && \
+    git add "$CMD_SCRIPT/json/${DATE}" && \
+    git add "$CMD_SCRIPT/image/${DATE}.svg" && \
+    git add "$CMD_SCRIPT/image/${DATE}G.svg" && \
     git commit -m "AVAX: json/${DATE}" && \
     git push origin ;
 }
