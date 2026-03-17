@@ -1,5 +1,38 @@
 {
   "permissions": {
-    "allow": []
+    "allow": [
+      "Bash(awk:*)",
+      "Bash(cat:*)",
+      "Bash(cast:*)",
+      "Bash(cp:*)",
+      "Bash(cut:*)",
+      "Bash(deno:*)",
+      "Bash(diff:*)",
+      "Bash(done)",
+      "Bash(echo:*)",
+      "Bash(find:*)",
+      "Bash(forge:*)",
+      "Bash(git:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(node:*)",
+      "Bash(npm:*)",
+      "Bash(pdflatex:*)",
+      "Bash(pwd)",
+      "Bash(sed:*)",
+      "Bash(sort:*)",
+      "Bash(stat:*)",
+      "Bash(tail:*)",
+      "Bash(touch:*)",
+      "Bash(which:*)",
+      "Bash(wc:*)",
+      "Bash(xargs:*)",
+      "WebSearch"
+    ],
+    "deny": [],
+    "ask": []
   }
 }
